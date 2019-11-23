@@ -35,20 +35,26 @@ xmlns:an ="http://schemas.assemblee-nationale.fr/referentiel">
 
     <!-- votes-->
     <xsl:template match="an:scrutin">
-        <xsl:variable name="to-mandats" select="/assemblée/liste-acteurs/an:acteur/an:mandats/an:mandat[uid eq current()./acteur/mandatRef]"/>
-        <xsl:variable name="acteur" select="an:ventilationVotes/an:organe/an:groupes/an:groupe/an:vote/an:décompteNominatif/pours/votant[./acteurRef eq $acteurID]"/>
+       <xsl:param name="acteurID"/>
+       
+        <xsl:variable name="acteur" select="./an:ventilationVotes/an:organe/an:groupes/an:groupe/an:vote/an:decompteNominatif/an:pours/an:votant[./an:acteurRef eq $acteurID]"/>
+        <xsl:variable name="to-mandats" select="/assemblée/liste-acteurs/an:acteur/an:mandats/an:mandat[./an:uid eq current()/$acteur/an:mandatRef]"/>
+        <xsl:variable name="to-organe" select="/assemblée/liste-organes/an:organe"/>
         <sc>
+
             <xsl:attribute name ="nom" select="./an:titre"/>
             <xsl:attribute name ="sort" select="./an:sort/an:code"/>
             <xsl:attribute name ="date" select="./an:dateScrutin"/>
-            <xsl:attribute name ="mandat" select="concat($to-mandat/infosQualite/libQualite, ' ' ,$to-mandat/typeOrgane, ' de la ',$to-mandat/legislature,'ème législature')"/>
-            <xsl:attribute name ="grp" select=""/>
-            <xsl:if test="./$acteur/parDelegation eq false">
+            <xsl:attribute name ="mandat">  
+                <xsl:value-of select="concat($to-mandats/an:infosQualite/an:libQualite, ' ' ,$to-organe[./an:uid eq $to-mandats/an:organes/an:organeRef]/an:libelle)"/>
+            </xsl:attribute>
+            <xsl:attribute name ="grp" select="$to-organe[./an:uid eq current()/$acteur/../../../../an:organeRef]/an:libelle"/>
+            <xsl:if test="./$acteur/an:parDelegation eq 'false'">
                 <xsl:attribute name ="présent">
                     <xsl:value-of>Oui</xsl:value-of>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="./$acteur/parDelegation eq true">
+            <xsl:if test="./$acteur/an:parDelegation eq 'true'">
                 <xsl:attribute name ="présent">
                     <xsl:value-of>Non</xsl:value-of>
                 </xsl:attribute>
