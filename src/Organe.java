@@ -10,6 +10,10 @@ public class Organe {
         this.libelle = lib;
     }
 
+    public Organe (String uid){
+        this.uid = uid;
+    }
+
     public void setLibelle(String lib){
         this.libelle=lib;
     }

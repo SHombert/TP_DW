@@ -12,7 +12,6 @@ public class InfoSax extends DefaultHandler {
 
     }
     public void endDocument() throws SAXException{
-        System.out.println(nb);
     }
 
     public void startElement(String namespaceURI, String sName, String qName, Attributes attrs) throws SAXException {

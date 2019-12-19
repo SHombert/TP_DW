@@ -17,6 +17,7 @@ import org.w3c.dom.NodeList;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.File;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,11 +94,12 @@ public class InfoDom{
         }
 
         // Copie de tous les acteurs
+
         Element listAct = (Element) docAS.getDocumentElement().getFirstChild();
         NodeList actsToLoad = listAct.getChildNodes();
 
         for(int i=0;i<actsToLoad.getLength();++i){
-          Element act = (Element) acteurs.item(i);
+          Element act = (Element) actsToLoad.item(i);
           Acteur newAct = new Acteur(act.getFirstChild().getTextContent());
 
           NodeList params = act.getChildNodes();
@@ -112,14 +114,19 @@ public class InfoDom{
               NodeList mandats = param.getChildNodes();
               for(int k=0; k<mandats.getLength();++k){
                 Element mand = (Element) mandats.item(k);
-                Mandat newMandat = new Mandat(mand.getFirstChild());
-                newMandat.setLib(mand.getLastChild().getPreviousSibling().getLastChild()); // libQualiteSex
+                Mandat newMandat = new Mandat(mand.getFirstChild().getTextContent());
+                newMandat.setLib(mand.getLastChild().getPreviousSibling().getLastChild().getTextContent()); // libQualiteSex
                 newMandat.setOrgRef(mand.getLastChild().getFirstChild().getTextContent());
                 newAct.addMandat(newMandat.getUid(),newMandat);
               }
             }
           }
         }
+
+        // Traitement des scrutins
+
+        NodeList scrutins = docAS.getDocumentElement().getLastChild().getChildNodes();
+        
 
 
 
