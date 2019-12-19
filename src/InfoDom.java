@@ -36,6 +36,7 @@ public class InfoDom{
 	    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
       dbf.setIgnoringComments(true);
       dbf.setIgnoringElementContentWhitespace(true);
+      dbf.setValidating(false);
 
       db = dbf.newDocumentBuilder();
 
@@ -60,14 +61,19 @@ public class InfoDom{
         DocumentType docType = domImpl.createDocumentType("information", 
                                                      null, "info.dtd");
 
-        String nameSpace = "http://schemas.assemblee-nationale.fr/referentiel";                                             
+        String nameSpace = "http://schemas.assemblee-nationale.fr/referentiel";                                      
         res = domImpl.createDocument(nameSpace, "information", docType);
         
-        Element listOrg = (Element) docAS.getDocumentElement().getFirstChild();
-        System.out.println(listOrg.());
-        NodeList acteurs = listOrg.getChildNodes();
+        Element listOrg = (Element) docAS.getDocumentElement().getFirstChild().getNextSibling();
+        NodeList orgsToLoad = listOrg.getChildNodes();
 
-        /*for(int i=0;i<acteurs.getLength();++i){
+        for(int i=0;i<orgs.getLength();++i){
+          Element org = (Element) orgsToLoad.item(i);
+          Organe newOrg = new Organe(org.getFirstChild().getTextContent());
+          
+
+        }
+        for(int i=0;i<acteurs.getLength();++i){
           Element act = (Element) acteurs.item(i);
           Acteur newAct = new Acteur(act.getFirstChild().getTextContent());
 
@@ -81,7 +87,7 @@ public class InfoDom{
             }
 
           }
-        }*/
+        }
 
 
     }

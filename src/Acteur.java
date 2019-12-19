@@ -7,6 +7,10 @@ public class Acteur {
     String prenom;
     Map <String,Mandat> mandats;
 
+    public Acteur(){
+        Map <String,Mandat> mandats = new HashMap <>();
+
+    }
     public Acteur(String uid){
         this.uid = uid;
         Map <String,Mandat> mandats = new HashMap <>();
