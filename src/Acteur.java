@@ -31,6 +31,10 @@ public class Acteur {
         this.prenom = pren;
     }
 
+    public void addMandat(String uid, Mandat mandat){
+        mandats.put(uid,mandat);
+    }
+
     
     // get / set / addMandat ?
 
