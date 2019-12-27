@@ -1,0 +1,202 @@
+<?xml encoding="UTF-8"?>
+
+        <!ELEMENT assemblée (liste-acteurs|liste-organes|liste-scrutins)*>
+        <!ELEMENT liste-acteurs (acteur)*>
+        <!ELEMENT acteur (uid|etatCivil|profession|uri_hatvp|adresses|mandats)*>
+        <!ATTLIST acteur
+                xmlns CDATA #REQUIRED>
+        <!ELEMENT uid (#PCDATA)>
+        <!ATTLIST uid
+                xmlns:xsi CDATA #IMPLIED
+                xsi:type CDATA #IMPLIED>
+        <!ELEMENT etatCivil (ident|infoNaissance|dateDeces)*>
+        <!ELEMENT ident (civ|prenom|nom|alpha|trigramme)*>
+        <!ELEMENT civ (#PCDATA)>
+        <!ELEMENT prenom (#PCDATA)>
+        <!ELEMENT nom (#PCDATA)>
+        <!ELEMENT alpha (#PCDATA)>
+        <!ELEMENT trigramme (#PCDATA)>
+        <!ATTLIST trigramme
+                xmlns:xsi CDATA #REQUIRED
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT infoNaissance (dateNais|villeNais|depNais|paysNais)*>
+        <!ELEMENT dateNais (#PCDATA)>
+        <!ELEMENT villeNais (#PCDATA)>
+        <!ELEMENT depNais (#PCDATA)>
+        <!ELEMENT paysNais (#PCDATA)>
+        <!ELEMENT dateDeces (#PCDATA)>
+        <!ATTLIST dateDeces
+                xmlns:xsi CDATA #REQUIRED
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT profession (libelleCourant|socProcINSEE)*>
+        <!ELEMENT libelleCourant (#PCDATA)>
+        <!ELEMENT socProcINSEE (catSocPro|famSocPro)*>
+        <!ELEMENT catSocPro (#PCDATA)>
+        <!ELEMENT famSocPro (#PCDATA)>
+        <!ELEMENT uri_hatvp (#PCDATA)>
+        <!ATTLIST uri_hatvp
+                xmlns:xsi CDATA #REQUIRED
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT adresses (adresse)*>
+        <!ELEMENT adresse (uid|type|typeLibelle|poids|adresseDeRattachement|intitule|numeroRue|nomRue|complementAdresse|codePostal|ville|valElec)*>
+        <!ATTLIST adresse
+                xmlns:xsi CDATA #REQUIRED
+                xsi:type CDATA #REQUIRED>
+        <!ELEMENT type (#PCDATA)>
+        <!ELEMENT typeLibelle (#PCDATA)>
+        <!ELEMENT poids (#PCDATA)>
+        <!ELEMENT adresseDeRattachement (#PCDATA)>
+        <!ATTLIST adresseDeRattachement
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT intitule (#PCDATA)>
+        <!ATTLIST intitule
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT numeroRue (#PCDATA)>
+        <!ELEMENT nomRue (#PCDATA)>
+        <!ELEMENT complementAdresse (#PCDATA)>
+        <!ATTLIST complementAdresse
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT codePostal (#PCDATA)>
+        <!ELEMENT ville (#PCDATA)>
+        <!ELEMENT valElec (#PCDATA)>
+        <!ELEMENT mandats (mandat)*>
+        <!ELEMENT mandat (uid|acteurRef|legislature|typeOrgane|dateDebut|datePublication|dateFin|preseance|nominPrincipale|infosQualite|organes|suppleants|chambre|election|mandature|collaborateurs)*>
+        <!ATTLIST mandat
+                xmlns:xsi CDATA #REQUIRED
+                xsi:type CDATA #REQUIRED>
+        <!ELEMENT acteurRef (#PCDATA)>
+        <!ELEMENT legislature (#PCDATA)>
+        <!ATTLIST legislature
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT typeOrgane (#PCDATA)>
+        <!ELEMENT dateDebut (#PCDATA)>
+        <!ELEMENT datePublication (#PCDATA)>
+        <!ATTLIST datePublication
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT dateFin (#PCDATA)>
+        <!ATTLIST dateFin
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT preseance (#PCDATA)>
+        <!ELEMENT nominPrincipale (#PCDATA)>
+        <!ELEMENT infosQualite (codeQualite|libQualite|libQualiteSex)*>
+        <!ELEMENT codeQualite (#PCDATA)>
+        <!ELEMENT libQualite (#PCDATA)>
+        <!ELEMENT libQualiteSex (#PCDATA)>
+        <!ELEMENT organes (organeRef)*>
+        <!ELEMENT organeRef (#PCDATA)>
+        <!ELEMENT suppleants (suppleant)*>
+        <!ELEMENT suppleant (dateDebut|dateFin|suppleantRef)*>
+        <!ELEMENT suppleantRef (#PCDATA)>
+        <!ELEMENT chambre (#PCDATA)>
+        <!ATTLIST chambre
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT election (lieu|causeMandat|refCirconscription)*>
+        <!ELEMENT lieu (region|regionType|departement|numDepartement|numCirco)*>
+        <!ELEMENT region (#PCDATA)>
+        <!ELEMENT regionType (#PCDATA)>
+        <!ELEMENT departement (#PCDATA)>
+        <!ELEMENT numDepartement (#PCDATA)>
+        <!ELEMENT numCirco (#PCDATA)>
+        <!ELEMENT causeMandat (#PCDATA)>
+        <!ELEMENT refCirconscription (#PCDATA)>
+        <!ELEMENT mandature (datePriseFonction|causeFin|premiereElection|placeHemicycle|mandatRemplaceRef)*>
+        <!ELEMENT datePriseFonction (#PCDATA)>
+        <!ELEMENT causeFin (#PCDATA)>
+        <!ELEMENT premiereElection (#PCDATA)>
+        <!ELEMENT placeHemicycle (#PCDATA)>
+        <!ATTLIST placeHemicycle
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT mandatRemplaceRef (#PCDATA)>
+        <!ATTLIST mandatRemplaceRef
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT collaborateurs (#PCDATA)>
+        <!ATTLIST collaborateurs
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT liste-organes (organe)*>
+        <!ELEMENT organe (uid|codeType|libelle|libelleEdition|libelleAbrege|libelleAbrev|viMoDe|organeParent|chambre|regime|legislature|regimeJuridique|siteInternet|nombreReunionsAnnuelles|secretariat|organeRef|groupes)*>
+        <!ATTLIST organe
+                xmlns CDATA #IMPLIED
+                xmlns:xsi CDATA #IMPLIED
+                xsi:type CDATA #IMPLIED>
+        <!ELEMENT codeType (#PCDATA)>
+        <!ELEMENT libelle (#PCDATA)>
+        <!ELEMENT libelleEdition (#PCDATA)>
+        <!ELEMENT libelleAbrege (#PCDATA)>
+        <!ELEMENT libelleAbrev (#PCDATA)>
+        <!ELEMENT viMoDe (dateDebut|dateAgrement|dateFin)*>
+        <!ELEMENT dateAgrement (#PCDATA)>
+        <!ATTLIST dateAgrement
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT organeParent (#PCDATA)>
+        <!ATTLIST organeParent
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT regime (#PCDATA)>
+        <!ELEMENT regimeJuridique (#PCDATA)>
+        <!ELEMENT siteInternet (#PCDATA)>
+        <!ELEMENT nombreReunionsAnnuelles (#PCDATA)>
+        <!ELEMENT secretariat (secretaire01|secretaire02)*>
+        <!ELEMENT secretaire01 (#PCDATA)>
+        <!ELEMENT secretaire02 (#PCDATA)>
+        <!ATTLIST secretaire02
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT liste-scrutins (scrutin)*>
+        <!ELEMENT scrutin (uid|numero|organeRef|legislature|sessionRef|seanceRef|dateScrutin|quantiemeJourSeance|typeVote|sort|titre|demandeur|objet|modePublicationDesVotes|syntheseVote|ventilationVotes|miseAuPoint)*>
+        <!ATTLIST scrutin
+                xmlns CDATA #REQUIRED
+                xmlns:xsi CDATA #REQUIRED>
+        <!ELEMENT numero (#PCDATA)>
+        <!ELEMENT sessionRef (#PCDATA)>
+        <!ELEMENT seanceRef (#PCDATA)>
+        <!ELEMENT dateScrutin (#PCDATA)>
+        <!ELEMENT quantiemeJourSeance (#PCDATA)>
+        <!ELEMENT typeVote (codeTypeVote|libelleTypeVote|typeMajorite)*>
+        <!ELEMENT codeTypeVote (#PCDATA)>
+        <!ELEMENT libelleTypeVote (#PCDATA)>
+        <!ELEMENT typeMajorite (#PCDATA)>
+        <!ELEMENT sort (code|libelle)*>
+        <!ELEMENT code (#PCDATA)>
+        <!ELEMENT titre (#PCDATA)>
+        <!ELEMENT demandeur (texte|referenceLegislative)*>
+        <!ELEMENT texte (#PCDATA)>
+        <!ELEMENT referenceLegislative (#PCDATA)>
+        <!ATTLIST referenceLegislative
+                xsi:nil CDATA #REQUIRED>
+        <!ELEMENT objet (libelle|referenceLegislative)*>
+        <!ELEMENT modePublicationDesVotes (#PCDATA)>
+        <!ELEMENT syntheseVote (nombreVotants|suffragesExprimes|nbrSuffragesRequis|annonce|decompte)*>
+        <!ELEMENT nombreVotants (#PCDATA)>
+        <!ELEMENT suffragesExprimes (#PCDATA)>
+        <!ELEMENT nbrSuffragesRequis (#PCDATA)>
+        <!ELEMENT annonce (#PCDATA)>
+        <!ELEMENT decompte (nonVotants|pour|contre|abstentions|nonVotantsVolontaires)*>
+        <!ELEMENT nonVotants (votant)*>
+        <!ATTLIST nonVotants
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT pour (#PCDATA)>
+        <!ATTLIST pour
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT contre (#PCDATA)>
+        <!ATTLIST contre
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT abstentions (#PCDATA)>
+        <!ATTLIST abstentions
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT nonVotantsVolontaires (#PCDATA)>
+        <!ATTLIST nonVotantsVolontaires
+                xsi:nil CDATA #IMPLIED>
+        <!ELEMENT ventilationVotes (organe)*>
+        <!ELEMENT groupes (groupe)*>
+        <!ELEMENT groupe (organeRef|nombreMembresGroupe|vote)*>
+        <!ELEMENT nombreMembresGroupe (#PCDATA)>
+        <!ELEMENT vote (positionMajoritaire|decompteVoix|decompteNominatif)*>
+        <!ELEMENT positionMajoritaire (#PCDATA)>
+        <!ELEMENT decompteVoix (nonVotants|pour|contre|abstentions|nonVotantsVolontaires)*>
+        <!ELEMENT decompteNominatif (nonVotants|pours|contres|abstentions)*>
+        <!ELEMENT votant (acteurRef|mandatRef|causePositionVote|parDelegation)*>
+        <!ELEMENT mandatRef (#PCDATA)>
+        <!ELEMENT causePositionVote (#PCDATA)>
+        <!ELEMENT pours (votant)*>
+        <!ELEMENT parDelegation (#PCDATA)>
+        <!ELEMENT contres (#PCDATA)>
+        <!ELEMENT miseAuPoint (nonVotants|pours|abstentions|nonVotantsVolontaires|contres|dysfonctionnement)*>
+        <!ELEMENT dysfonctionnement (nonVotants|pour|contre|abstentions|nonVotantsVolontaires)*>
