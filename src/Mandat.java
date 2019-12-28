@@ -24,6 +24,14 @@ public class Mandat {
     public String getUid(){
         return this.uid;
     }
+
+    public String getOrgane(){
+        return this.organeRef;
+    }
+
+    public String getlibQualite(){
+        return this.libQualite;
+    }
     
 
 }
