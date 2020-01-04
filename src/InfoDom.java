@@ -159,6 +159,7 @@ public class InfoDom {
               .getMandat(votant.getFirstChild().getNextSibling().getTextContent());
           String mandat = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
           sc.setMandat(mandat);
+          sc.setPst(votant.getLastChild().getTextContent());
           acteurs.get(votant.getFirstChild().getTextContent()).addSc(sc);
         }
       }
