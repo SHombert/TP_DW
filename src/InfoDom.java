@@ -22,8 +22,10 @@ import java.util.Map;
 public class InfoDom {
 
   public Document docAS, res;
+
   Map<String, Acteur> acteurs;
   Map<String, Organe> orgs;
+
   public DocumentBuilder db;
   public Transformer transformer;
 
@@ -32,6 +34,11 @@ public class InfoDom {
     orgs = new HashMap<>();
   }
 
+  /**
+   * Méthode de chargement du fichier à traiter en entrée
+   * 
+   * @param fichier : chemin du fichier à charger
+   */
   public void load(String fichier) {
     try {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -49,6 +56,11 @@ public class InfoDom {
     }
   }
 
+  /**
+   * Méthode de sauvegarde du fichier résultant
+   * 
+   * @param fichier : chemin du fichier à créer
+   */
   public void save(String fichier) {
     try {
       TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -115,7 +127,7 @@ public class InfoDom {
 
             newMandat.setOrgRef(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
                 .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
-                .getFirstChild().getTextContent());
+                .getFirstChild().getTextContent()); // organeRef
             newAct.addMandat(newMandat.getUid(), newMandat);
           }
         }
@@ -134,22 +146,27 @@ public class InfoDom {
       Element scrut = (Element) scrutins.item(i);
       String titre = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
           .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
-          .getTextContent();
+          .getTextContent(); // titre
 
       if (titre.contains("l'information")) {
 
         String date = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
-            .getNextSibling().getNextSibling().getTextContent();
+            .getNextSibling().getNextSibling().getTextContent(); // date
         String sort = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
             .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getFirstChild()
-            .getTextContent();
+            .getTextContent(); // sort
 
         NodeList scrutGroupes = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild()
-            .getNextSibling().getChildNodes();
+            .getNextSibling().getChildNodes(); // groupes du scrutin
+
         for (int j = 0; j < scrutGroupes.getLength(); ++j) {
           Element group = (Element) scrutGroupes.item(j);
-          String grp = group.getFirstChild().getTextContent();
-          NodeList pours = group.getFirstChild().getNextSibling().getNextSibling().getFirstChild().getNextSibling().getNextSibling().getFirstChild().getNextSibling().getChildNodes();
+
+          String grp = group.getFirstChild().getTextContent(); // organeRef
+          NodeList pours = group.getFirstChild().getNextSibling().getNextSibling().getFirstChild().getNextSibling()
+              .getNextSibling().getFirstChild().getNextSibling().getChildNodes();
+          
+          //parcours des votants pour créer et ajouter les scrutins aux bons acteurs
           for (int k = 0; k < pours.getLength(); ++k) {
             Element votant = (Element) pours.item(k);
             Scrutin sc = new Scrutin();
@@ -196,17 +213,14 @@ public class InfoDom {
           act.appendChild(scrutin);
         }
         racine.appendChild(act);
-
       }
-
     }
-
   }
 
   public static void main(String argv[]) {
     InfoDom id = new InfoDom();
     id.load("../assemblee1920.xml");
     id.traiter();
-    id.save("sortieDom1.xml");
+    id.save("../sortieDom.xml");
   }
 }

@@ -78,8 +78,12 @@ public class InfoDomXpath {
     String nameSpace = "http://schemas.assemblee-nationale.fr/referentiel";
     res = domImpl.createDocument(nameSpace, "information", docType);
 
+    // on utilise un objet Xpath avec la methode evaluate pour effectuer des requetes xpath
+
     XPathFactory xpf = XPathFactory.newInstance();
     XPath path = xpf.newXPath();
+
+    // Configuration du namespace et d'un prefixe pour les requêtes xpath
     path.setNamespaceContext(new NamespaceContext() {
       public String getNamespaceURI(String s) {
         if ("an".equals(s))
@@ -94,6 +98,7 @@ public class InfoDomXpath {
       }
     });
     
+    // copie des organes
     Element rootAS = docAS.getDocumentElement();
     String expression = "liste-organes/an:organe";
     try {
@@ -112,8 +117,6 @@ public class InfoDomXpath {
       System.out.println(e.getMessage());
     }
   
-    
-
     //Copie des acteurs
     try {
       NodeList actsToLoad = (NodeList) path.evaluate("liste-acteurs/an:acteur", rootAS, XPathConstants.NODESET);
@@ -141,7 +144,7 @@ public class InfoDomXpath {
                   
               newMandat.setOrgRef(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
                   .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
-                  .getFirstChild().getTextContent());
+                  .getFirstChild().getTextContent()); //organeRef
               newAct.addMandat(newMandat.getUid(), newMandat);
             }
           }
@@ -236,7 +239,7 @@ public class InfoDomXpath {
     InfoDomXpath id = new InfoDomXpath();
     id.load("../assemblee1920.xml");
     id.traiter();
-    id.save("sortieDom2.xml");
+    id.save("../sortieDomXpath.xml");
 
   }
 }

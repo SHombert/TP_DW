@@ -1,11 +1,8 @@
 import org.xml.sax.*;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 import java.io.*;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
@@ -13,13 +10,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
 
 public class InfoSax extends DefaultHandler {
-    // Initiation des variables
-    public String noeudCourant;
+
+    public String noeudCourant; // Nom du noeud qu'on a sauvegardé dans le startElement
+
     // Flags
     public Boolean isOrg = false;
     public Boolean isAct = false;
@@ -30,15 +25,15 @@ public class InfoSax extends DefaultHandler {
     public Boolean isPours = false;
     public Boolean isAdr = false;
 
-    public int compt;
-
     public Acteur acteur;
     public Mandat mandat;
     public Scrutin scrutin;
     public Organe org;
-    public String uidAct, uidMandat, uidOrg;
+    public String uidAct, uidMandat, uidOrg; // uid à retenir pour les traitements
+
     Map<String, Acteur> acteurs;
     Map<String, Organe> orgs;
+
     File file;
     PrintWriter printWriter;
 
@@ -46,7 +41,7 @@ public class InfoSax extends DefaultHandler {
         super();
         acteurs = new HashMap<>();
         orgs = new HashMap<>();
-        file = new File("sortieSax.xml");
+        file = new File("../sortieSax.xml");
         try {
             printWriter = new PrintWriter(file);
         } catch (FileNotFoundException e) {
@@ -54,33 +49,35 @@ public class InfoSax extends DefaultHandler {
         }
     }
 
-    // Début du parsing
+  
     public void startDocument() throws SAXException {
         printWriter.println("<?xml version = \"1.0\" standalone=\"no\"?>");
         printWriter.println("<!DOCTYPE information SYSTEM \"info.dtd\">");
         printWriter.println("<information>");
     }
 
-    // Fin du parsing
+
+    /**
+     * Construction du document xml résultat 
+     */
     public void endDocument() throws SAXException{
         ArrayList<Acteur> acts = new ArrayList<>(acteurs.values());
         Collections.sort(acts, Comparator.comparing(Acteur::getNom).thenComparing(Acteur::getPrenom));
         for (int i = 0; i< acts.size(); i++){
             if (acts.get(i).isProcessable()){
-                compt++;
-                printWriter.println("<act nom = \"" + acts.get(i).getNom() + " " + acts.get(i).getPrenom()+ "\">");
+                printWriter.println("   <act nom = \"" + acts.get(i).getNom() + " " + acts.get(i).getPrenom()+ "\">");
                 for (Iterator<Scrutin> it = acts.get(i).scrutins.iterator(); it.hasNext(); ) {
                  
                     Scrutin sc = it.next();
-                    printWriter.println("   <sc nom =\"" + sc.getTitre()+ "\"");
-                    printWriter.println("       sort =\"" + sc.getSort()+ "\"");
-                    printWriter.println("       date =\"" + sc.getDate()+ "\"");
-                    printWriter.println("       mandat=\"" + sc.getMandat()+ "\"");
-                    printWriter.println("       grp =\"" + sc.getGrp()+ "\"");
-                    printWriter.println("       present =\"" + sc.getPresent() + "\"/>");
+                    printWriter.println("       <sc nom =\"" + sc.getTitre()+ "\"");
+                    printWriter.println("           sort =\"" + sc.getSort()+ "\"");
+                    printWriter.println("           date =\"" + sc.getDate()+ "\"");
+                    printWriter.println("           mandat=\"" + sc.getMandat()+ "\"");
+                    printWriter.println("           grp =\"" + sc.getGrp()+ "\"");
+                    printWriter.println("           present =\"" + sc.getPresent() + "\"/>");
                 }
 
-            printWriter.println("</act>");
+            printWriter.println("   </act>");
             }     
         }
         printWriter.println("</information>");
@@ -136,11 +133,13 @@ public class InfoSax extends DefaultHandler {
         switch (localName) {
             case "acteur":
                 isAct = false;
+                // on ajoute l'acteur qui vient d'être complété à la map d'acteurs
                 acteurs.put(uidAct, acteur);
                 break;
 
             case "organe":
                 isOrg = false;
+                // on ajoute l'organe qui vient d'être complété à la map d'organes
                 orgs.put(uidOrg, org);
                 break;
 
@@ -150,6 +149,7 @@ public class InfoSax extends DefaultHandler {
 
             case "mandat":
                 isMandat = false;
+                // on ajoute à l'acteur courant le mandat qui vient d'etre créé
                 acteur.addMandat(uidMandat, mandat);
                 break;
 
@@ -164,11 +164,13 @@ public class InfoSax extends DefaultHandler {
             case "pours":
                 isPours = false;
                 break;
-                case "adresse":
+
+            case "adresse":
                 isAdr = false;
                 break;
 
             case "votant":
+                // On ajoute à l'acteur correspondant le scrutins qui a été créé à condition que le flag sc n'ai pas été repassé à "faux" (ie le titre contient bien l'information)
                 if(isSc){
                     acteurs.get(uidAct).addSc(scrutin);
 
@@ -182,30 +184,30 @@ public class InfoSax extends DefaultHandler {
 
     public void characters(char[] data, int start, int end) {
 
-        String noeud = new String(data, start, end);
+        String contenu = new String(data, start, end);
 
         if (isAct) {
-            if (!isMandat) {
-                if(!isAdr){
+            if (!isMandat) { // on doit tester si on n'est pas dans un mandat car on peut trouver le noeud "uid" également
+                if(!isAdr){ // idem pour adresse
                     if (noeudCourant.equals("uid")) {
-                        acteur = new Acteur(noeud);
-                        uidAct = noeud;
+                        acteur = new Acteur(contenu);
+                        uidAct = contenu;
                     } else if (noeudCourant.equals("prenom")) {
-                        acteur.setPrenom(noeud);
+                        acteur.setPrenom(contenu);
                     } else if (noeudCourant.equals("nom")) {
-                        acteur.setNom(noeud);
+                        acteur.setNom(contenu);
                     }
                 }
                 
             }else{
 
                 if (noeudCourant.equals("uid")) {
-                    uidMandat = noeud;
-                    mandat = new Mandat(noeud);
+                    uidMandat = contenu;
+                    mandat = new Mandat(contenu);
                 } else if (noeudCourant.equals("libQualiteSex")) {
-                    mandat.setLib(noeud);
+                    mandat.setLib(contenu);
                 } else if (noeudCourant.equals("organeRef")) {
-                    mandat.setOrgRef(noeud);
+                    mandat.setOrgRef(contenu);
                 }
             }
 
@@ -213,44 +215,43 @@ public class InfoSax extends DefaultHandler {
 
         if (isOrg) {
             if (noeudCourant.equals("uid")) {
-                org = new Organe(noeud);
-                uidOrg = noeud;
+                org = new Organe(contenu);
+                uidOrg = contenu;
             } else if (noeudCourant.equals("libelle")) {
-                org.setLibelle(noeud);
+                org.setLibelle(contenu);
             }
         }
 
         if (isSc) {
             if (noeudCourant.equals("dateScrutin")) {
                 scrutin = new Scrutin();
-                scrutin.setDate(noeud);
+                scrutin.setDate(contenu);
             } else if (noeudCourant.equals("titre")) {
-                if (noeud.contains("l'information")) {
-                    scrutin.setTitre(noeud);
+                if (contenu.contains("l'information")) {
+                    scrutin.setTitre(contenu);
                 } else {
                     isSc = false;
                 }
             } else if (noeudCourant.equals("code")) {
                 if (isSort) {
-                    scrutin.setSort(noeud);
+                    scrutin.setSort(contenu);
                 }
             }
             if (isGrp) {
                 if (noeudCourant.equals("organeRef")){
-                    scrutin.setGrp(orgs.get(noeud).getLibelle());
+                    scrutin.setGrp(orgs.get(contenu).getLibelle());
 
                 }
             }
             if (isPours) {
                 if (noeudCourant.equals("acteurRef")) {
-                    uidAct = noeud;
+                    uidAct = contenu; // on retient l'acteur pour pouvoir lui ajouter le scrutin une fois la balise fermante </votant> atteinte
                 } else if (noeudCourant.equals("mandatRef")) {
-                   
-                    Mandat m = acteurs.get(uidAct).getMandat(noeud);
+                    Mandat m = acteurs.get(uidAct).getMandat(contenu);
                     String mand = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
                     scrutin.setMandat(mand);
                 } else if (noeudCourant.equals("parDelegation")) {
-                    if (noeud == "false") {
+                    if (contenu == "false") {
                         scrutin.setPst("Non");
                     } else {
                         scrutin.setPst("Oui");
