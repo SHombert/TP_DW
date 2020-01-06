@@ -1,6 +1,7 @@
 import java.util.Map;
-import java.util.ArrayList;
+import java.util.Set;
 import java.util.HashMap;
+import java.util.HashSet;
 
 
 
@@ -9,25 +10,27 @@ public class Acteur {
     String nom;
     String prenom;
     Map <String,Mandat> mandats;
-    ArrayList <Scrutin> scrutins; // Liste des scrutins dont le titre contient "l'information" pour lesquels l'acteur a voté pour
+    Set <Scrutin> scrutins; // Liste des scrutins dont le titre contient "l'information" pour lesquels l'acteur a voté pour
 
     public Acteur(){
         mandats = new HashMap <>();
-        scrutins = new ArrayList<>();
+        scrutins = new HashSet<>();
 
     }
+
     public Acteur(String uid){
         this.uid = uid;
         mandats = new HashMap <>();
-        scrutins = new ArrayList<>();
+        scrutins = new HashSet<>();
 
     }
+
     public Acteur (String uid, String nom, String prenom){
         this.uid = uid;
         this.nom = nom;
         this.prenom = prenom;
         mandats = new HashMap <>();
-        scrutins = new ArrayList<>();
+        scrutins = new HashSet<>();
 
 
     }
@@ -63,11 +66,11 @@ public class Acteur {
         return !scrutins.isEmpty();
     }
 	public String getNom() {
-		return nom;
+		return this.nom;
     }
     
     public String getPrenom(){
-        return prenom;
+        return this.prenom;
     }
 
 

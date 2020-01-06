@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class InfoDom {
@@ -76,7 +77,6 @@ public class InfoDom {
     // Copie de tous les organes
 
     Element listOrg = (Element) docAS.getDocumentElement().getFirstChild().getNextSibling();
-    System.out.println(listOrg.getTagName());
     NodeList orgsToLoad = listOrg.getChildNodes();
 
     for (int i = 0; i < orgsToLoad.getLength(); ++i) {
@@ -89,7 +89,6 @@ public class InfoDom {
     // Copie de tous les acteurs
 
     Element listAct = (Element) docAS.getDocumentElement().getFirstChild();
-    System.out.println(listAct.getTagName());
     NodeList actsToLoad = listAct.getChildNodes();
 
     for (int i = 0; i < actsToLoad.getLength(); ++i) {
@@ -113,7 +112,7 @@ public class InfoDom {
             newMandat.setLib(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
                 .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getLastChild()
                 .getTextContent());// libQualiteSex
-                
+
             newMandat.setOrgRef(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
                 .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
                 .getFirstChild().getTextContent());
@@ -138,30 +137,35 @@ public class InfoDom {
           .getTextContent();
 
       if (titre.contains("l'information")) {
+
         String date = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
             .getNextSibling().getNextSibling().getTextContent();
         String sort = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
             .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getFirstChild()
             .getTextContent();
-        String grp = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild().getNextSibling()
-            .getFirstChild().getFirstChild().getTextContent();
-        NodeList pours = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild().getNextSibling()
-            .getFirstChild().getLastChild().getLastChild().getFirstChild().getNextSibling().getChildNodes();
 
-        for (int j = 0; j < pours.getLength(); ++j) {
-          Element votant = (Element) pours.item(j);
-          Scrutin sc = new Scrutin();
-          sc.setTitre(titre);
-          sc.setDate(date);
-          sc.setSort(sort);
-          sc.setGrp(orgs.get(grp).getLibelle());
-          Mandat m = acteurs.get(votant.getFirstChild().getTextContent())
-              .getMandat(votant.getFirstChild().getNextSibling().getTextContent());
-          String mandat = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
-          sc.setMandat(mandat);
-          sc.setPst(votant.getLastChild().getTextContent());
-          acteurs.get(votant.getFirstChild().getTextContent()).addSc(sc);
+        NodeList scrutGroupes = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild()
+            .getNextSibling().getChildNodes();
+        for (int j = 0; j < scrutGroupes.getLength(); ++j) {
+          Element group = (Element) scrutGroupes.item(j);
+          String grp = group.getFirstChild().getTextContent();
+          NodeList pours = group.getFirstChild().getNextSibling().getNextSibling().getFirstChild().getNextSibling().getNextSibling().getFirstChild().getNextSibling().getChildNodes();
+          for (int k = 0; k < pours.getLength(); ++k) {
+            Element votant = (Element) pours.item(k);
+            Scrutin sc = new Scrutin();
+            sc.setTitre(titre);
+            sc.setDate(date);
+            sc.setSort(sort);
+            sc.setGrp(orgs.get(grp).getLibelle());
+            Mandat m = acteurs.get(votant.getFirstChild().getTextContent())
+                .getMandat(votant.getFirstChild().getNextSibling().getTextContent());
+            String mandat = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
+            sc.setMandat(mandat);
+            sc.setPst(votant.getLastChild().getTextContent());
+            acteurs.get(votant.getFirstChild().getTextContent()).addSc(sc);
+          }
         }
+
       }
     }
 
@@ -175,8 +179,9 @@ public class InfoDom {
         final Element act = res.createElement("act");
         act.setAttribute("nom", entry.getNom() + " " + entry.getPrenom());
 
-        for (int i = 0; i < entry.scrutins.size(); ++i) {
-          Scrutin sc = entry.scrutins.get(i);
+        for (Iterator<Scrutin> it = entry.scrutins.iterator(); it.hasNext();) {
+
+          Scrutin sc = it.next();
           final Element scrutin = res.createElement("sc");
           scrutin.setAttribute("nom", sc.getTitre());
           scrutin.setAttribute("sort", sc.getSort());
@@ -203,6 +208,5 @@ public class InfoDom {
     id.load("../assemblee1920.xml");
     id.traiter();
     id.save("sortieDom1.xml");
-
   }
 }

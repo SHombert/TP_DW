@@ -6,6 +6,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 import java.io.*;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +19,7 @@ import javax.xml.parsers.SAXParser;
 
 public class InfoSax extends DefaultHandler {
     // Initiation des variables
-    public String noeudCourant = null;
+    public String noeudCourant;
     // Flags
     public Boolean isOrg = false;
     public Boolean isAct = false;
@@ -27,8 +28,10 @@ public class InfoSax extends DefaultHandler {
     public Boolean isSort = false;
     public Boolean isGrp = false;
     public Boolean isPours = false;
+    public Boolean isAdr = false;
 
-    public ArrayList<Acteur> tableauActeurs = new ArrayList<Acteur>();
+    public int compt;
+
     public Acteur acteur;
     public Mandat mandat;
     public Scrutin scrutin;
@@ -53,8 +56,9 @@ public class InfoSax extends DefaultHandler {
 
     // Début du parsing
     public void startDocument() throws SAXException {
-        printWriter.println("<?xml encoding=\"UTF-8\"?>");
+        printWriter.println("<?xml version = \"1.0\" standalone=\"no\"?>");
         printWriter.println("<!DOCTYPE information SYSTEM \"info.dtd\">");
+        printWriter.println("<information>");
     }
 
     // Fin du parsing
@@ -63,16 +67,18 @@ public class InfoSax extends DefaultHandler {
         Collections.sort(acts, Comparator.comparing(Acteur::getNom).thenComparing(Acteur::getPrenom));
         for (int i = 0; i< acts.size(); i++){
             if (acts.get(i).isProcessable()){
-                printWriter.println("<act nom = \"" + acts.get(i).getNom() + acts.get(i).getPrenom()+ ">");
-                for (int j = 0; j < acts.get(i).scrutins.size(); j++){
-                    Scrutin sc = acts.get(i).scrutins.get(j);
-                    printWriter.println("<sc nom =\"" + sc.getTitre());
-                    printWriter.println("sort =\"" + sc.getSort());
-                    printWriter.println("date =\"" + sc.getDate());
-                    printWriter.println("mandat=\"" + sc.getMandat());
-                    printWriter.println("grp =\"" + sc.getGrp());
-                    printWriter.println("present =\"" + sc.getPresent() + "/>");
-            }
+                compt++;
+                printWriter.println("<act nom = \"" + acts.get(i).getNom() + " " + acts.get(i).getPrenom()+ "\">");
+                for (Iterator<Scrutin> it = acts.get(i).scrutins.iterator(); it.hasNext(); ) {
+                 
+                    Scrutin sc = it.next();
+                    printWriter.println("   <sc nom =\"" + sc.getTitre()+ "\"");
+                    printWriter.println("       sort =\"" + sc.getSort()+ "\"");
+                    printWriter.println("       date =\"" + sc.getDate()+ "\"");
+                    printWriter.println("       mandat=\"" + sc.getMandat()+ "\"");
+                    printWriter.println("       grp =\"" + sc.getGrp()+ "\"");
+                    printWriter.println("       present =\"" + sc.getPresent() + "\"/>");
+                }
 
             printWriter.println("</act>");
             }     
@@ -83,7 +89,7 @@ public class InfoSax extends DefaultHandler {
 
     public void startElement(String namespaceURI, String localName, String qName, Attributes attrs)
             throws SAXException {
-
+            
         noeudCourant = localName;
         switch (localName) {
 
@@ -115,12 +121,17 @@ public class InfoSax extends DefaultHandler {
             isPours = true;
             break;
 
+            case "adresse":
+            isAdr = true;
+            break;
+
         default:
             break;
         }
     }
 
     public void endElement(String uri, String localName, String qName) throws SAXException {
+
 
         switch (localName) {
             case "acteur":
@@ -153,9 +164,15 @@ public class InfoSax extends DefaultHandler {
             case "pours":
                 isPours = false;
                 break;
+                case "adresse":
+                isAdr = false;
+                break;
 
             case "votant":
-                acteurs.get(uidAct).addSc(scrutin);
+                if(isSc){
+                    acteurs.get(uidAct).addSc(scrutin);
+
+                }
                 break;
 
             default:
@@ -169,15 +186,18 @@ public class InfoSax extends DefaultHandler {
 
         if (isAct) {
             if (!isMandat) {
-                if (noeudCourant.equals("uid")) {
-                    acteur = new Acteur(noeud);
-                    uidAct = noeud;
-                } else if (noeudCourant.equals("prenom")) {
-                    acteur.setPrenom(noeud);
-                } else if (noeudCourant.equals("nom")) {
-                    acteur.setNom(noeud);
+                if(!isAdr){
+                    if (noeudCourant.equals("uid")) {
+                        acteur = new Acteur(noeud);
+                        uidAct = noeud;
+                    } else if (noeudCourant.equals("prenom")) {
+                        acteur.setPrenom(noeud);
+                    } else if (noeudCourant.equals("nom")) {
+                        acteur.setNom(noeud);
+                    }
                 }
-            } else {
+                
+            }else{
 
                 if (noeudCourant.equals("uid")) {
                     uidMandat = noeud;
@@ -214,15 +234,18 @@ public class InfoSax extends DefaultHandler {
                 if (isSort) {
                     scrutin.setSort(noeud);
                 }
-            } else if (noeudCourant.equals("organeRef")) {
-                if (isGrp) {
+            }
+            if (isGrp) {
+                if (noeudCourant.equals("organeRef")){
                     scrutin.setGrp(orgs.get(noeud).getLibelle());
+
                 }
             }
             if (isPours) {
                 if (noeudCourant.equals("acteurRef")) {
                     uidAct = noeud;
                 } else if (noeudCourant.equals("mandatRef")) {
+                   
                     Mandat m = acteurs.get(uidAct).getMandat(noeud);
                     String mand = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
                     scrutin.setMandat(mand);
@@ -237,10 +260,6 @@ public class InfoSax extends DefaultHandler {
         }
     }
 
-    public static void main(String[] args) {
-        InfoSax saxHandler = new InfoSax();
-        
-    }
 }
 
 

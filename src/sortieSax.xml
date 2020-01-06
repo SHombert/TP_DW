@@ -1,0 +1,906 @@
+<?xml version = "1.0" standalone="no"?>
+<!DOCTYPE information SYSTEM "info.dtd">
+<information>
+<act nom = "Abadie Caroline">
+</act>
+<act nom = "Abba Bérangère">
+</act>
+<act nom = "Adam Damien">
+</act>
+<act nom = "Adam Lénaïck">
+</act>
+<act nom = "Ahamada Saïd">
+</act>
+<act nom = "Alauzet Éric">
+</act>
+<act nom = "Ali Ramlati">
+</act>
+<act nom = "Aliot Louis">
+</act>
+<act nom = "Amadou Aude">
+</act>
+<act nom = "Anato Patrice">
+</act>
+<act nom = "André François">
+</act>
+<act nom = "Anglade Pieyre-Alexandre">
+</act>
+<act nom = "Anthoine Emmanuelle">
+</act>
+<act nom = "Ardouin Jean-Philippe">
+</act>
+<act nom = "Arend Christophe">
+</act>
+<act nom = "Attal Gabriel">
+</act>
+<act nom = "Avia Laetitia">
+</act>
+<act nom = "Aviragnet Joël">
+</act>
+<act nom = "Bachelier Florian">
+</act>
+<act nom = "Bagarry Delphine">
+</act>
+<act nom = "Baichère Didier">
+</act>
+<act nom = "Balanant Erwan">
+</act>
+<act nom = "Bannier Géraldine">
+</act>
+<act nom = "Barbier Frédéric">
+</act>
+<act nom = "Barrot Jean-Noël">
+</act>
+<act nom = "Batut Xavier">
+</act>
+<act nom = "Baudu Stéphane">
+</act>
+<act nom = "Bazin Thibault">
+</act>
+<act nom = "Bazin-Malgras Valérie">
+</act>
+<act nom = "Beaudouin-Hubiere Sophie">
+</act>
+<act nom = "Beauvais Valérie">
+</act>
+<act nom = "Belhaddad Belkhir">
+</act>
+<act nom = "Belhamiti Mounir">
+</act>
+<act nom = "Benin Justine">
+</act>
+<act nom = "Bergé Aurore">
+</act>
+<act nom = "Bernalicis Ugo">
+</act>
+<act nom = "Berta Philippe">
+</act>
+<act nom = "Berville Hervé">
+</act>
+<act nom = "Besson-Moreau Grégory">
+</act>
+<act nom = "Bessot Ballot Barbara">
+</act>
+<act nom = "Bilde Bruno">
+</act>
+<act nom = "Blanc Anne">
+</act>
+<act nom = "Blanchet Christophe">
+</act>
+<act nom = "Blein Yves">
+</act>
+<act nom = "Bois Pascal">
+</act>
+<act nom = "Bolo Philippe">
+</act>
+<act nom = "Bonnell Bruno">
+</act>
+<act nom = "Bono-Vandorme Aude">
+</act>
+<act nom = "Bony Jean-Yves">
+</act>
+<act nom = "Borowczyk Julien">
+</act>
+<act nom = "Bothorel Éric">
+</act>
+<act nom = "Bouchet Jean-Claude">
+</act>
+<act nom = "Boudié Florent">
+</act>
+<act nom = "Bourguignon Brigitte">
+</act>
+<act nom = "Bourlanges Jean-Louis">
+</act>
+<act nom = "Bournazel Pierre-Yves">
+</act>
+<act nom = "Bouyx Bertrand">
+</act>
+<act nom = "Boyer Pascale">
+</act>
+<act nom = "Braun-Pivet Yaël">
+</act>
+<act nom = "Breton Xavier">
+</act>
+<act nom = "Bricout Jean-Louis">
+</act>
+<act nom = "Bridey Jean-Jacques">
+</act>
+<act nom = "Brocard Blandine">
+</act>
+<act nom = "Bru Vincent">
+</act>
+<act nom = "Brugnera Anne">
+</act>
+<act nom = "Brulebois Danielle">
+</act>
+<act nom = "Brun Fabrice">
+</act>
+<act nom = "Brunet Anne-France">
+</act>
+<act nom = "Buchou Stéphane">
+</act>
+<act nom = "Bureau-Bonnard Carole">
+</act>
+<act nom = "Cabaré Pierre">
+</act>
+<act nom = "Calvez Céline">
+</act>
+<act nom = "Cariou Émilie">
+</act>
+<act nom = "Cattelot Anne-Laure">
+</act>
+<act nom = "Cattin Jacques">
+</act>
+<act nom = "Causse Lionel">
+</act>
+<act nom = "Cazarian Danièle">
+</act>
+<act nom = "Cazebonne Samantha">
+</act>
+<act nom = "Cazeneuve Jean-René">
+</act>
+<act nom = "Cazenove Sébastien">
+</act>
+<act nom = "Cellier Anthony">
+</act>
+<act nom = "Cesarini Jean-François">
+</act>
+<act nom = "Chalas Émilie">
+</act>
+<act nom = "Chalumeau Philippe">
+</act>
+<act nom = "Chapelier Annie">
+</act>
+<act nom = "Charrière Sylvie">
+</act>
+<act nom = "Charvier Fannette">
+</act>
+<act nom = "Chassaing Philippe">
+</act>
+<act nom = "Chenu Sébastien">
+</act>
+<act nom = "Cherpion Gérard">
+</act>
+<act nom = "Chiche Guillaume">
+</act>
+<act nom = "Christophe Paul">
+</act>
+<act nom = "Cinieri Dino">
+</act>
+<act nom = "Ciotti Éric">
+</act>
+<act nom = "Claireaux Stéphane">
+</act>
+<act nom = "Clapot Mireille">
+</act>
+<act nom = "Cloarec-Le Nabour Christine">
+</act>
+<act nom = "Clément Jean-Michel">
+</act>
+<act nom = "Colas-Roy Jean-Charles">
+</act>
+<act nom = "Colboc Fabienne">
+</act>
+<act nom = "Coquerel Éric">
+</act>
+<act nom = "Corbière Alexis">
+</act>
+<act nom = "Cordier Pierre">
+</act>
+<act nom = "Cormier-Bouligeon François">
+</act>
+<act nom = "Corneloup Josiane">
+</act>
+<act nom = "Couillard Bérangère">
+</act>
+<act nom = "Crouzet Michèle">
+</act>
+<act nom = "Cubertafon Jean-Pierre">
+</act>
+<act nom = "Da Silva Dominique">
+</act>
+<act nom = "Dalloz Marie-Christine">
+</act>
+<act nom = "Damaisin Olivier">
+</act>
+<act nom = "Daniel Yves">
+</act>
+<act nom = "Dassault Olivier">
+</act>
+<act nom = "David Dominique">
+</act>
+<act nom = "Degois Typhanie">
+</act>
+<act nom = "Delatte Marc">
+</act>
+<act nom = "Delatte Rémi">
+</act>
+<act nom = "Delpon Michel">
+</act>
+<act nom = "Deprez-Audebert Marguerite">
+</act>
+<act nom = "Descamps Béatrice">
+</act>
+<act nom = "Descoeur Vincent">
+</act>
+<act nom = "Descrozaille Frédéric">
+</act>
+<act nom = "Dharréville Pierre">
+</act>
+<act nom = "Di Pompeo Christophe">
+</act>
+<act nom = "Dirx Benjamin">
+</act>
+<act nom = "Dive Julien">
+</act>
+<act nom = "Djebbari Jean-Baptiste">
+</act>
+<act nom = "Do Stéphanie">
+</act>
+<act nom = "Dombreval Loïc">
+</act>
+<act nom = "Dubois Jacqueline">
+</act>
+<act nom = "Dubost Coralie">
+</act>
+<act nom = "Dubré-Chirat Nicole">
+</act>
+<act nom = "Dufeu Schubert Audrey">
+</act>
+<act nom = "Dufrègne Jean-Paul">
+</act>
+<act nom = "Dumas Françoise">
+</act>
+<act nom = "Dumas Frédérique">
+</act>
+<act nom = "Dumont Pierre-Henri">
+</act>
+<act nom = "Dupont Stella">
+</act>
+<act nom = "Dupont-Aignan Nicolas">
+</act>
+<act nom = "Duvergé Bruno">
+</act>
+<act nom = "Démoulin Nicolas">
+</act>
+<act nom = "El Guerrab M'jid">
+</act>
+<act nom = "El Haïry Sarah">
+</act>
+<act nom = "Eliaou Jean-François">
+</act>
+<act nom = "Elimas Nathalie">
+</act>
+<act nom = "Errante Sophie">
+</act>
+<act nom = "Essayan Nadia">
+</act>
+<act nom = "Euzet Christophe">
+</act>
+<act nom = "Evrard José">
+</act>
+<act nom = "Fabre Catherine">
+</act>
+<act nom = "Fajgeles Élise">
+</act>
+<act nom = "Fanget Michel">
+</act>
+<act nom = "Fasquelle Daniel">
+</act>
+<act nom = "Faucillon Elsa">
+</act>
+<act nom = "Faure-Muntian Valéria">
+</act>
+<act nom = "Fauvergue Jean-Michel">
+</act>
+<act nom = "Fiat Caroline">
+</act>
+<act nom = "Fiévet Jean-Marie">
+</act>
+<act nom = "Florennes Isabelle">
+</act>
+<act nom = "Folliot Philippe">
+</act>
+<act nom = "Fontaine-Domeizel Emmanuelle">
+</act>
+<act nom = "Fontenel-Personne Pascale">
+</act>
+<act nom = "Forteza Paula">
+</act>
+<act nom = "Freschi Alexandre">
+</act>
+<act nom = "Fuchs Bruno">
+</act>
+<act nom = "Fugit Jean-Luc">
+</act>
+<act nom = "Gaillard Olivier">
+</act>
+<act nom = "Gaillot Albane">
+</act>
+<act nom = "Galbadon Grégory">
+</act>
+<act nom = "Gallerneau Patricia">
+</act>
+<act nom = "Garcia Laurent">
+</act>
+<act nom = "Gassilloud Thomas">
+</act>
+<act nom = "Gaultier Jean-Jacques">
+</act>
+<act nom = "Gauvain Raphaël">
+</act>
+<act nom = "Gayte Laurence">
+</act>
+<act nom = "Genetet Anne">
+</act>
+<act nom = "Gipson Séverine">
+</act>
+<act nom = "Girardin Éric">
+</act>
+<act nom = "Giraud Joël">
+</act>
+<act nom = "Givernet Olga">
+</act>
+<act nom = "Goasguen Claude">
+</act>
+<act nom = "Gomez-Bassac Valérie">
+</act>
+<act nom = "Gosselin Philippe">
+</act>
+<act nom = "Gouffier-Cha Guillaume">
+</act>
+<act nom = "Goulet Perrine">
+</act>
+<act nom = "Gouttefarde Fabien">
+</act>
+<act nom = "Grandjean Carole">
+</act>
+<act nom = "Granjus Florence">
+</act>
+<act nom = "Grau Romain">
+</act>
+<act nom = "Gregoire Olivia">
+</act>
+<act nom = "Grelier Jean-Carles">
+</act>
+<act nom = "Guerel Émilie">
+</act>
+<act nom = "Guerini Stanislas">
+</act>
+<act nom = "Guévenoux Marie">
+</act>
+<act nom = "Gérard Raphaël">
+</act>
+<act nom = "Hai Nadia">
+</act>
+<act nom = "Hammerer Véronique">
+</act>
+<act nom = "Hammouche Brahim">
+</act>
+<act nom = "Haury Yannick">
+</act>
+<act nom = "Hennion Christine">
+</act>
+<act nom = "Henriet Pierre">
+</act>
+<act nom = "Holroyd Alexandre">
+</act>
+<act nom = "Houbron Dimitri">
+</act>
+<act nom = "Houlié Sacha">
+</act>
+<act nom = "Huppé Philippe">
+</act>
+<act nom = "Hérin Danièle">
+</act>
+<act nom = "Iborra Monique">
+</act>
+<act nom = "Isaac-Sibille Cyrille">
+</act>
+<act nom = "Jacques Jean-Michel">
+</act>
+<act nom = "Jacquier-Laforge Élodie">
+</act>
+<act nom = "Janvier Caroline">
+</act>
+<act nom = "Jerretie Christophe">
+</act>
+<act nom = "Jolivet François">
+</act>
+<act nom = "Joncour Bruno">
+</act>
+<act nom = "Josso Sandrine">
+</act>
+<act nom = "Juanico Régis">
+</act>
+<act nom = "Julien-Laferrière Hubert">
+</act>
+<act nom = "Jumel Sébastien">
+</act>
+<act nom = "Kamowski Catherine">
+</act>
+<act nom = "Karamanli Marietta">
+</act>
+<act nom = "Kasbarian Guillaume">
+</act>
+<act nom = "Kerbarh Stéphanie">
+</act>
+<act nom = "Kerlogot Yannick">
+</act>
+<act nom = "Kervran Loïc">
+</act>
+<act nom = "Khattabi Fadila">
+</act>
+<act nom = "Khedher Anissa">
+</act>
+<act nom = "Kokouendo Rodrigue">
+</act>
+<act nom = "Krabal Jacques">
+</act>
+<act nom = "Krimi Sonia">
+</act>
+<act nom = "Kuric Aina">
+</act>
+<act nom = "Kuster Brigitte">
+</act>
+<act nom = "Kéclard-Mondésir Manuéla">
+</act>
+<act nom = "Laabid Mustapha">
+</act>
+<act nom = "Labaronne Daniel">
+</act>
+<act nom = "Lachaud Bastien">
+</act>
+<act nom = "Lagleize Jean-Luc">
+</act>
+<act nom = "Lainé Fabien">
+</act>
+<act nom = "Lakrafi Amélia">
+</act>
+<act nom = "Lang Anne-Christine">
+</act>
+<act nom = "Laqhila Mohamed">
+</act>
+<act nom = "Lardet Frédérique">
+</act>
+<act nom = "Larive Michel">
+</act>
+<act nom = "Larrivé Guillaume">
+</act>
+<act nom = "Larsonneur Jean-Charles">
+</act>
+<act nom = "Lasserre-David Florence">
+</act>
+<act nom = "Latombe Philippe">
+</act>
+<act nom = "Lavergne Pascal">
+</act>
+<act nom = "Lazaar Fiona">
+</act>
+<act nom = "Le Bohec Gaël">
+</act>
+<act nom = "Le Feur Sandrine">
+</act>
+<act nom = "Le Fur Marc">
+</act>
+<act nom = "Le Gac Didier">
+</act>
+<act nom = "Le Gendre Gilles">
+</act>
+<act nom = "Le Grip Constance">
+</act>
+<act nom = "Le Meur Annaïg">
+</act>
+<act nom = "Le Peih Nicole">
+</act>
+<act nom = "Le Pen Marine">
+</act>
+<act nom = "Le Vigoureux Fabrice">
+</act>
+<act nom = "Lebec Marie">
+</act>
+<act nom = "Leclabart Jean-Claude">
+</act>
+<act nom = "Leclerc Sébastien">
+</act>
+<act nom = "Lecocq Charlotte">
+</act>
+<act nom = "Ledoux Vincent">
+</act>
+<act nom = "Leguille-Balloy Martine">
+</act>
+<act nom = "Lejeune Christophe">
+</act>
+<act nom = "Lemoine Patricia">
+</act>
+<act nom = "Lenne Marion">
+</act>
+<act nom = "Lescure Roland">
+</act>
+<act nom = "Levy Geneviève">
+</act>
+<act nom = "Limon Monique">
+</act>
+<act nom = "Lioger Richard">
+</act>
+<act nom = "Liso Brigitte">
+</act>
+<act nom = "Lorho Marie-France">
+</act>
+<act nom = "Louis Alexandra">
+</act>
+<act nom = "Louwagie Véronique">
+</act>
+<act nom = "Luquet Aude">
+</act>
+<act nom = "Lurton Gilles">
+</act>
+<act nom = "Magne Marie-Ange">
+</act>
+<act nom = "Magnier Lise">
+</act>
+<act nom = "Maillard Sylvain">
+</act>
+<act nom = "Maillart-Méhaignerie Laurence">
+</act>
+<act nom = "Maire Jacques">
+</act>
+<act nom = "Manin Josette">
+</act>
+<act nom = "Maquet Jacqueline">
+</act>
+<act nom = "Marilossian Jacques">
+</act>
+<act nom = "Marsaud Sandra">
+</act>
+<act nom = "Martin Didier">
+</act>
+<act nom = "Masson Jean-Louis">
+</act>
+<act nom = "Masséglia Denis">
+</act>
+<act nom = "Matras Fabien">
+</act>
+<act nom = "Mattei Jean-Paul">
+</act>
+<act nom = "Mauborgne Sereine">
+</act>
+<act nom = "Mazars Stéphane">
+</act>
+<act nom = "Mbaye Jean François">
+</act>
+<act nom = "Melchior Graziella">
+</act>
+<act nom = "Mendes Ludovic">
+</act>
+<act nom = "Mesnier Thomas">
+</act>
+<act nom = "Mette Sophie">
+</act>
+<act nom = "Meunier Frédérique">
+</act>
+<act nom = "Meynier-Millefert Marjolaine">
+</act>
+<act nom = "Michel Monica">
+</act>
+<act nom = "Michel-Kleisbauer Philippe">
+</act>
+<act nom = "Michels Thierry">
+</act>
+<act nom = "Mignola Patrick">
+</act>
+<act nom = "Millienne Bruno">
+</act>
+<act nom = "Minot Maxime">
+</act>
+<act nom = "Mirallès Patricia">
+</act>
+<act nom = "Mis Jean-Michel">
+</act>
+<act nom = "Molac Paul">
+</act>
+<act nom = "Moreau Jean-Baptiste">
+</act>
+<act nom = "Morenas Adrien">
+</act>
+<act nom = "Motin Cendra">
+</act>
+<act nom = "Moutchou Naïma">
+</act>
+<act nom = "Muschotti Cécile">
+</act>
+<act nom = "Mélenchon Jean-Luc">
+</act>
+<act nom = "Ménard Emmanuelle">
+</act>
+<act nom = "Nadot Sébastien">
+</act>
+<act nom = "Nogal Mickaël">
+</act>
+<act nom = "O Delphine">
+</act>
+<act nom = "O'Petit Claire">
+</act>
+<act nom = "Obono Danièle">
+</act>
+<act nom = "Oppelt Valérie">
+</act>
+<act nom = "Osson Catherine">
+</act>
+<act nom = "Pahun Jimmy">
+</act>
+<act nom = "Pajot Ludovic">
+</act>
+<act nom = "Paluszkiewicz Xavier">
+</act>
+<act nom = "Panonacle Sophie">
+</act>
+<act nom = "Parigi Jean-François">
+</act>
+<act nom = "Paris Didier">
+</act>
+<act nom = "Park Zivka">
+</act>
+<act nom = "Pau-Langevin George">
+</act>
+<act nom = "Pauget Éric">
+</act>
+<act nom = "Pellois Hervé">
+</act>
+<act nom = "Peltier Guillaume">
+</act>
+<act nom = "Perea Alain">
+</act>
+<act nom = "Perrot Patrice">
+</act>
+<act nom = "Person Pierre">
+</act>
+<act nom = "Petel Anne-Laurence">
+</act>
+<act nom = "Petit Frédéric">
+</act>
+<act nom = "Petit Maud">
+</act>
+<act nom = "Petit Valérie">
+</act>
+<act nom = "Peyrol Bénédicte">
+</act>
+<act nom = "Peyron Michèle">
+</act>
+<act nom = "Pichereau Damien">
+</act>
+<act nom = "Pietraszewski Laurent">
+</act>
+<act nom = "Pires Beaune Christine">
+</act>
+<act nom = "Piron Béatrice">
+</act>
+<act nom = "Pitollat Claire">
+</act>
+<act nom = "Pompili Barbara">
+</act>
+<act nom = "Pont Jean-Pierre">
+</act>
+<act nom = "Portarrieu Jean-François">
+</act>
+<act nom = "Poueyto Josy">
+</act>
+<act nom = "Poulliat Éric">
+</act>
+<act nom = "Pouzyreff Natalia">
+</act>
+<act nom = "Provendier Florence">
+</act>
+<act nom = "Prud'homme Loïc">
+</act>
+<act nom = "Pueyo Joaquim">
+</act>
+<act nom = "Quatennens Adrien">
+</act>
+<act nom = "Quentin Didier">
+</act>
+<act nom = "Questel Bruno">
+</act>
+<act nom = "Racon-Bouzon Cathy">
+</act>
+<act nom = "Ramadier Alain">
+</act>
+<act nom = "Ramos Richard">
+</act>
+<act nom = "Raphan Pierre-Alain">
+</act>
+<act nom = "Rauch Isabelle">
+</act>
+<act nom = "Rebeyrotte Rémy">
+</act>
+<act nom = "Reiss Frédéric">
+</act>
+<act nom = "Renson Hugues">
+</act>
+<act nom = "Ressiguier Muriel">
+</act>
+<act nom = "Reynès Bernard">
+</act>
+<act nom = "Rilhac Cécile">
+</act>
+<act nom = "Riotton Véronique">
+</act>
+<act nom = "Rist Stéphanie">
+</act>
+<act nom = "Rixain Marie-Pierre">
+</act>
+<act nom = "Robert Mireille">
+</act>
+<act nom = "Rolland Vincent">
+</act>
+<act nom = "Romeiro Dias Laëtitia">
+</act>
+<act nom = "Roseren Xavier">
+</act>
+<act nom = "Rossi Laurianne">
+</act>
+<act nom = "Rouillard Gwendal">
+</act>
+<act nom = "Roussel Cédric">
+</act>
+<act nom = "Rubin Sabine">
+</act>
+<act nom = "Rudigoz Thomas">
+</act>
+<act nom = "Rupin Pacôme">
+</act>
+<act nom = "Saddier Martial">
+</act>
+<act nom = "Saint-Martin Laurent">
+</act>
+<act nom = "Saint-Paul Laetitia">
+</act>
+<act nom = "Sarles Nathalie">
+</act>
+<act nom = "Saulignac Hervé">
+</act>
+<act nom = "Savatier Jacques">
+</act>
+<act nom = "Schellenberger Raphaël">
+</act>
+<act nom = "Sempastous Jean-Bernard">
+</act>
+<act nom = "Sermier Jean-Marie">
+</act>
+<act nom = "Simian Benoit">
+</act>
+<act nom = "Solère Thierry">
+</act>
+<act nom = "Sommer Denis">
+</act>
+<act nom = "Son-Forget Joachim">
+</act>
+<act nom = "Sorre Bertrand">
+</act>
+<act nom = "Straumann Éric">
+</act>
+<act nom = "Studer Bruno">
+</act>
+<act nom = "Sylla Sira">
+</act>
+<act nom = "Taché Aurélien">
+</act>
+<act nom = "Tamarelle-Verhaeghe Marie">
+</act>
+<act nom = "Tan Buon">
+</act>
+<act nom = "Tanguy Liliana">
+</act>
+<act nom = "Taquet Adrien">
+</act>
+<act nom = "Terlier Jean">
+</act>
+<act nom = "Testé Stéphane">
+</act>
+<act nom = "Thill Agnès">
+</act>
+<act nom = "Thillaye Sabine">
+</act>
+<act nom = "Thiébaut Vincent">
+</act>
+<act nom = "Thomas Valérie">
+</act>
+<act nom = "Thourot Alice">
+</act>
+<act nom = "Tiegna Huguette">
+</act>
+<act nom = "Tolmont Sylvie">
+</act>
+<act nom = "Touraine Jean-Louis">
+</act>
+<act nom = "Tourret Alain">
+</act>
+<act nom = "Toutut-Picard Élisabeth">
+</act>
+<act nom = "Trastour-Isnart Laurence">
+</act>
+<act nom = "Travert Stéphane">
+</act>
+<act nom = "Trisse Nicole">
+</act>
+<act nom = "Trompille Stéphane">
+</act>
+<act nom = "Tuffnell Frédérique">
+</act>
+<act nom = "Turquois Nicolas">
+</act>
+<act nom = "Valentin Isabelle">
+</act>
+<act nom = "Valetta Ardisson Alexandra">
+</act>
+<act nom = "Vallaud Boris">
+</act>
+<act nom = "Vanceunebrock-Mialon Laurence">
+</act>
+<act nom = "Vatin Pierre">
+</act>
+<act nom = "Verdier-Jouclas Marie-Christine">
+</act>
+<act nom = "Vichnievsky Laurence">
+</act>
+<act nom = "Victory Michèle">
+</act>
+<act nom = "Vidal Annie">
+</act>
+<act nom = "Vignal Patrick">
+</act>
+<act nom = "Vignon Corinne">
+</act>
+<act nom = "Villani Cédric">
+</act>
+<act nom = "Villiers André">
+</act>
+<act nom = "Vuilletet Guillaume">
+</act>
+<act nom = "Véran Olivier">
+</act>
+<act nom = "Warsmann Jean-Luc">
+</act>
+<act nom = "Waserman Sylvain">
+</act>
+<act nom = "Wonner Martine">
+</act>
+<act nom = "Zannier Hélène">
+</act>
+<act nom = "Zulesi Jean-Marc">
+</act>
+<act nom = "de Courson Charles">
+</act>
+<act nom = "de Courson Yolaine">
+</act>
+<act nom = "de Lavergne Célia">
+</act>
+<act nom = "de Montchalin Amélie">
+</act>
+<act nom = "de Sarnez Marielle">
+</act>
+<act nom = "de Vaucouleurs Michèle">
+</act>
+<act nom = "de la Verpillière Charles">
+</act>
+</information>

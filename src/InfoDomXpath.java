@@ -108,7 +108,6 @@ public class InfoDomXpath {
        
         orgs.put(newOrg.getUid(), newOrg);
       }
-      System.out.println("Fin traitement organes");
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -118,7 +117,6 @@ public class InfoDomXpath {
     //Copie des acteurs
     try {
       NodeList actsToLoad = (NodeList) path.evaluate("liste-acteurs/an:acteur", rootAS, XPathConstants.NODESET);
-      System.out.println("Traitement acteurs");
       for (int i = 0; i < actsToLoad.getLength(); ++i) {
         Element act = (Element) actsToLoad.item(i);
         Acteur newAct = new Acteur(act.getFirstChild().getTextContent());
@@ -210,8 +208,9 @@ public class InfoDomXpath {
         final Element act = res.createElement("act");
         act.setAttribute("nom", entry.getNom() + " " + entry.getPrenom());
 
-        for (int i = 0; i < entry.scrutins.size(); ++i) {
-          Scrutin sc = entry.scrutins.get(i);
+        for (Iterator<Scrutin> it = entry.scrutins.iterator(); it.hasNext();) {
+
+          Scrutin sc = it.next();
           final Element scrutin = res.createElement("sc");
           scrutin.setAttribute("nom", sc.getTitre());
           scrutin.setAttribute("sort", sc.getSort());

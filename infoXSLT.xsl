@@ -16,6 +16,7 @@ xmlns:an ="http://schemas.assemblee-nationale.fr/referentiel">
         <information>
             <xsl:apply-templates select="$liste-act-pour">
                 <xsl:sort select="./an:etatCivil/an:ident/an:nom"/>
+                <xsl:sort select="./an:etatCivil/an:ident/an:prenom"/>
             </xsl:apply-templates>
         </information>
 
@@ -46,7 +47,7 @@ xmlns:an ="http://schemas.assemblee-nationale.fr/referentiel">
             <xsl:attribute name ="sort" select="./an:sort/an:code"/>
             <xsl:attribute name ="date" select="./an:dateScrutin"/>
             <xsl:attribute name ="mandat">  
-                <xsl:value-of select="concat($to-mandats/an:infosQualite/an:libQualite, ' ' ,$to-organe[./an:uid eq $to-mandats/an:organes/an:organeRef]/an:libelle)"/>
+                <xsl:value-of select="concat($to-mandats/an:infosQualite/an:libQualiteSex, ' ' ,$to-organe[./an:uid eq $to-mandats/an:organes/an:organeRef]/an:libelle)"/>
             </xsl:attribute>
             <xsl:attribute name ="grp" select="$to-organe[./an:uid eq current()/$acteur/../../../../an:organeRef]/an:libelle"/>
             <xsl:if test="./$acteur/an:parDelegation eq 'false'">
