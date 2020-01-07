@@ -5,8 +5,6 @@ import javax.xml.parsers.SAXParser;
 public class AppliSax {
 
     public static void main(String[] args) {
-        // Parser
-        // instanciation classe handler
  
         try {
 

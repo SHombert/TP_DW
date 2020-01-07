@@ -6,7 +6,7 @@ Bouron Priscilla & Hombert Sarah
 
 Instruction de lancement des programmes : 
 
-1. ajouter le fichier assemblee1920.xml  à la racine du dossier du projet
+1. ajouter le fichier assemblee1920.xml  à la racine du dossier du projet, ainsi que l'archive saxon dans le dossier.
 2. ajouter en premiere ligne (apres xml version) la ligne : <!DOCTYPE assemblée SYSTEM "assemble1920.dtd"> dans le fichier assemblee1920.xml
  (il faut referencer la dtd pour effectuer les traitements sans erreurs). Il est également possible de récupérer le fichier déjà modifié dans le .zip du lien git ci-dessous.
 

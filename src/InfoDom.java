@@ -194,7 +194,7 @@ public class InfoDom {
     for (Acteur entry : acts) {
       if (entry.scrutins.size() > 0) {
         final Element act = res.createElement("act");
-        act.setAttribute("nom", entry.getNom() + " " + entry.getPrenom());
+        act.setAttribute("nom", entry.getPrenom() + " " + entry.getNom());
 
         for (Iterator<Scrutin> it = entry.scrutins.iterator(); it.hasNext();) {
 

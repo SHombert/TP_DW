@@ -65,7 +65,7 @@ public class InfoSax extends DefaultHandler {
         Collections.sort(acts, Comparator.comparing(Acteur::getNom).thenComparing(Acteur::getPrenom));
         for (int i = 0; i< acts.size(); i++){
             if (acts.get(i).isProcessable()){
-                printWriter.println("   <act nom = \"" + acts.get(i).getNom() + " " + acts.get(i).getPrenom()+ "\">");
+                printWriter.println("   <act nom = \"" + acts.get(i).getPrenom() + " " + acts.get(i).getNom()+ "\">");
                 for (Iterator<Scrutin> it = acts.get(i).scrutins.iterator(); it.hasNext(); ) {
                  
                     Scrutin sc = it.next();
