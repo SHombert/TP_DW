@@ -78,7 +78,8 @@ public class InfoDomXpath {
     String nameSpace = "http://schemas.assemblee-nationale.fr/referentiel";
     res = domImpl.createDocument(nameSpace, "information", docType);
 
-    // on utilise un objet Xpath avec la methode evaluate pour effectuer des requetes xpath
+    // on utilise un objet Xpath avec la methode evaluate pour effectuer des
+    // requetes xpath
 
     XPathFactory xpf = XPathFactory.newInstance();
     XPath path = xpf.newXPath();
@@ -90,41 +91,43 @@ public class InfoDomXpath {
           return "http://schemas.assemblee-nationale.fr/referentiel";
         return null;
       }
+
       public String getPrefix(String s) {
         return null;
       }
+
       public Iterator getPrefixes(String s) {
         return null;
       }
     });
-    
+
     // copie des organes
     Element rootAS = docAS.getDocumentElement();
     String expression = "liste-organes/an:organe";
     try {
       NodeList orgsToLoad = (NodeList) path.evaluate(expression, rootAS, XPathConstants.NODESET);
-     
+
       for (int i = 0; i < orgsToLoad.getLength(); ++i) {
         Element org = (Element) orgsToLoad.item(i);
         Organe newOrg = new Organe(org.getFirstChild().getTextContent());
-      
+
         String test = (String) path.evaluate("an:libelle", org, XPathConstants.STRING);
-        newOrg.setLibelle( test);
-       
+        newOrg.setLibelle(test);
+
         orgs.put(newOrg.getUid(), newOrg);
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
-  
-    //Copie des acteurs
+
+    // Copie des acteurs
     try {
       NodeList actsToLoad = (NodeList) path.evaluate("liste-acteurs/an:acteur", rootAS, XPathConstants.NODESET);
       for (int i = 0; i < actsToLoad.getLength(); ++i) {
         Element act = (Element) actsToLoad.item(i);
         Acteur newAct = new Acteur(act.getFirstChild().getTextContent());
         NodeList params = act.getChildNodes();
-  
+
         for (int j = 0; j < params.getLength(); ++j) {
           Element param = (Element) params.item(j);
           if (param.getTagName() == "etatCivil") { // Nom et prenom
@@ -132,19 +135,19 @@ public class InfoDomXpath {
             newAct.setPrenom(param.getFirstChild().getFirstChild().getNextSibling().getTextContent());
           }
           if (param.getTagName() == "mandats") { // recuperation de tous les mandats de l'acteur
-  
+
             NodeList mandats = param.getChildNodes();
             for (int k = 0; k < mandats.getLength(); ++k) {
               Element mand = (Element) mandats.item(k);
               Mandat newMandat = new Mandat(mand.getFirstChild().getTextContent());
-  
+
               newMandat.setLib(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
                   .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getLastChild()
                   .getTextContent());// libQualiteSex
-                  
-              newMandat.setOrgRef(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
+
+              newMandat.setOrgRef(mand.getFirstChild().getNextSibling().getNextSibling().getNextSibling()
                   .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
-                  .getFirstChild().getTextContent()); //organeRef
+                  .getNextSibling().getFirstChild().getTextContent()); // organeRef
               newAct.addMandat(newMandat.getUid(), newMandat);
             }
           }
@@ -154,14 +157,13 @@ public class InfoDomXpath {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    
 
     /**
      * Traitement des scrutins Pour tous les scrutins, si bon libelle, ajouter le sc
      * à chaque acteur ayant voté pour
      */
 
-     try {
+    try {
       NodeList scrutins = (NodeList) path.evaluate("liste-scrutins/an:scrutin", rootAS, XPathConstants.NODESET);
 
       for (int i = 0; i < scrutins.getLength(); ++i) {
@@ -169,37 +171,47 @@ public class InfoDomXpath {
         String titre = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
             .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
             .getTextContent();
-  
+
         if (titre.contains("l'information")) {
+
           String date = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
-              .getNextSibling().getNextSibling().getTextContent();
+              .getNextSibling().getNextSibling().getTextContent(); // date
           String sort = scrut.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling()
               .getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getFirstChild()
-              .getTextContent();
-          String grp = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild().getNextSibling()
-              .getFirstChild().getFirstChild().getTextContent();
-          NodeList pours = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild().getNextSibling()
-              .getFirstChild().getLastChild().getLastChild().getFirstChild().getNextSibling().getChildNodes();
-  
-          for (int j = 0; j < pours.getLength(); ++j) {
-            Element votant = (Element) pours.item(j);
-            Scrutin sc = new Scrutin();
-            sc.setTitre(titre);
-            sc.setDate(date);
-            sc.setSort(sort);
-            sc.setGrp(orgs.get(grp).getLibelle());
-            Mandat m = acteurs.get(votant.getFirstChild().getTextContent())
-                .getMandat(votant.getFirstChild().getNextSibling().getTextContent());
-            String mandat = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
-            sc.setMandat(mandat);
-            acteurs.get(votant.getFirstChild().getTextContent()).addSc(sc);
+              .getTextContent(); // sort
+
+          NodeList scrutGroupes = scrut.getLastChild().getPreviousSibling().getFirstChild().getFirstChild()
+              .getNextSibling().getChildNodes(); // groupes du scrutin
+
+          for (int j = 0; j < scrutGroupes.getLength(); ++j) {
+            Element group = (Element) scrutGroupes.item(j);
+
+            String grp = group.getFirstChild().getTextContent(); // organeRef
+            NodeList pours = group.getFirstChild().getNextSibling().getNextSibling().getFirstChild().getNextSibling()
+                .getNextSibling().getFirstChild().getNextSibling().getChildNodes();
+
+            // parcours des votants pour créer et ajouter les scrutins aux bons acteurs
+            for (int k = 0; k < pours.getLength(); ++k) {
+              Element votant = (Element) pours.item(k);
+              Scrutin sc = new Scrutin();
+              sc.setTitre(titre);
+              sc.setDate(date);
+              sc.setSort(sort);
+              sc.setGrp(orgs.get(grp).getLibelle());
+              Mandat m = acteurs.get(votant.getFirstChild().getTextContent())
+                  .getMandat(votant.getFirstChild().getNextSibling().getTextContent());
+              String mandat = m.getlibQualite() + ' ' + orgs.get(m.getOrgane()).getLibelle();
+              sc.setMandat(mandat);
+              sc.setPst(votant.getLastChild().getTextContent());
+              acteurs.get(votant.getFirstChild().getTextContent()).addSc(sc);
+            }
           }
+
         }
       }
-     } catch (Exception e) {
-       e.printStackTrace();
-     }
-   
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
     // construction du document
     Element racine = res.getDocumentElement();

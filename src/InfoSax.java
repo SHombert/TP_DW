@@ -51,7 +51,7 @@ public class InfoSax extends DefaultHandler {
 
   
     public void startDocument() throws SAXException {
-        printWriter.println("<?xml version = \"1.0\" standalone=\"no\"?>");
+        printWriter.println("<?xml version = \"1.0\" encoding=\"utf-8\" ?>");
         printWriter.println("<!DOCTYPE information SYSTEM \"info.dtd\">");
         printWriter.println("<information>");
     }
