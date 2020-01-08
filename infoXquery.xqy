@@ -22,13 +22,14 @@ declare variable $org := doc("assemblee1920.xml")/assemblée/liste-organes/an:or
                 <sc nom = "{$sc/an:titre}" 
                     sort = "{$sc/an:sort/an:code}"
                     date = "{$sc/an:dateScrutin}"
-                    mandat = "{$act/an:mandats/an:mandat[uid eq $acteur/an:mandatRef]/an:libQualiteSex} {$org[./uid eq $act/an:mandats/an:mandat[./uid eq $acteur/an:mandatRef]/an:organes/an:organeRef]/an:libelle}"
-                    grp = "{$org[./an:uid eq $acteur/../../../../an:organeRef]/an:libelle}" 
+                    mandat = "{$act/an:mandats/an:mandat[an:uid eq $acteur/an:mandatRef]/an:libQualiteSex} {$org[./an:uid eq $act/an:mandats/an:mandat[./an:uid eq $acteur/an:mandatRef]/an:organes/an:organeRef]/an:libelle}"
+                    grp = "{$org[./an:uid eq $acteur/../../../../an:organeRef]/an:libelle/text()}" 
                     present = "{
                         if($acteur/an:parDelegation ="true") then
                         ("Oui") else("Non")
                     }"
-                    />
-        }</act>
+                    
+                    >{$act/an:mandats/an:mandat[an:uid eq $acteur/an:mandatRef]/an:libQualiteSex/text()} {$org[./an:uid eq $act/an:mandats/an:mandat[./an:uid eq $acteur/an:mandatRef]/an:organes/an:organeRef]/an:libelle/text()}</sc>
+        } </act>
         
 }</information>
