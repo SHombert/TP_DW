@@ -10,4 +10,4 @@
   nom CDATA #REQUIRED
   sort (adopté|rejeté) #REQUIRED date CDATA #REQUIRED
   mandat CDATA #REQUIRED grp CDATA #REQUIRED
-  présent (Oui|Nom) #REQUIRED>
+  présent (Oui|Non) #REQUIRED>
